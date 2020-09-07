@@ -1,0 +1,56 @@
+.about {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 25px;
+}
+
+.about .about-item {
+  margin: 15px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.about .about-item .about-item-heading {
+  position: relative;
+  font-size: 20px;
+  padding-right: 80px;
+}
+
+.about .about-item .about-item-heading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+
+  background-image: url("../img/arrow_down.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition: all 0.75s ease-out;
+}
+
+.about .about-item .about-item-description {
+  opacity: 0;
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all 0.75s ease-out;
+}
+
+.about .about-item.open .about-item-heading {
+  margin-bottom: 15px;
+}
+.about .about-item.open .about-item-heading::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.about .about-item.open .about-item-description {
+  max-height: 1000px;
+  opacity: 1;
+}
