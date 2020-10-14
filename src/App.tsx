@@ -4,8 +4,6 @@ import About from './components/About';
 import Services from './components/Services';
 import Portfolio from './components/Portfolio';
 import Footer from './components/Footer';
-import './assets/css/bootstrap.min.css';
-import './assets/css/stylish-portfolio.css';
 import './App.css';
 import SideBar from './components/SideBar';
 import { stat } from 'fs';

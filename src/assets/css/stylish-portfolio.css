@@ -417,3 +417,7 @@ a:active {
 .text-secondary {
   color: #ecb807 !important;
 }
+
+.end-sars-container {
+  margin-top: 200px;
+}
