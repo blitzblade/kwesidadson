@@ -34,12 +34,12 @@ export class Form extends React.Component<IFormProps, IFormState> {
     if (this.validateForm()) {
       //const submitSuccess: boolean = await this.submitForm();
       //send request to flask api
-      const host = "http://cryptopriceadvisor.com/"
+      const host = "https://cryptopriceadvisor.com/"
       const url = `${host}/api/authorize_endsars_twitter/`
       console.log("ELEMENTS: ")
       
       let body = {
-          return_url: `${host}/endsars`,
+          return_url: "https://kwesidadson.com/endsars",
           callback_url: `${host}/endsars/callback`
       }
 
