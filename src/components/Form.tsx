@@ -86,8 +86,15 @@ export class Form extends React.Component<IFormProps, IFormState> {
 
   public render() {
     return (
+      <React.Fragment>
+        <div className="alert alert-info">
+             Hi there fighter! This will quote retweet random tweets with hashtags #ENDSWAT, #ENDSARS, #SARSMUSTGO, #SARSMUSTEND, #SARSMUSTENDNOW while you are away. This will be done once every hour so your account is safe! enter your username to activate it!
+           </div>
+      
         <div className="end-sars-container">
+           
         <div className="landing-info">
+         
       <form onSubmit={this.handleSubmit} noValidate={true}>
         <div className="container">
           <input name="username" placeholder="@username" onChange={this.handleChange}/>
@@ -106,6 +113,7 @@ export class Form extends React.Component<IFormProps, IFormState> {
       </form>
       </div>
       </div>
+      </React.Fragment>
     );
   }
 }
