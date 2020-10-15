@@ -34,12 +34,15 @@ export class Form extends React.Component<IFormProps, IFormState> {
     if (this.validateForm()) {
       //const submitSuccess: boolean = await this.submitForm();
       //send request to flask api
-      const host = "http://cryptopriceadvisor.com/"
+      const host = "https://cryptopriceadvisor.com"
       const url = `${host}/api/authorize_endsars_twitter/`
+      const home = "https://kwesidadson.com"
+
+      console.log("URL: ",url)
       console.log("ELEMENTS: ")
       
       let body = {
-          return_url: `${host}/endsars`,
+          return_url: `${home}/endsars`,
           callback_url: `${host}/endsars/callback`
       }
 
@@ -50,7 +53,12 @@ export class Form extends React.Component<IFormProps, IFormState> {
         // body is ReadableStream<Uint8Array>
         // parse as needed, e.g. reading directly, or
         let j = response.data
-        window.location.href = j["redirect_url"]
+        if (j["redirect_url"] === null){
+          window.location.href = "/endsars/failure"
+        }else{
+          window.location.href = j["redirect_url"]
+        }
+        
         // and further:
         //const asJSON = JSON.parse(asString);  // implicitly 'any', make sure to verify type on runtime.
       //}
