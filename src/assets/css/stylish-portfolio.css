@@ -12,6 +12,7 @@ html {
 
 body {
   font-family: "Source Sans Pro";
+  align-items: center;
 }
 
 .btn-xl {

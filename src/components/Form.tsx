@@ -1,6 +1,8 @@
 import { stringify } from "querystring";
 import React, { useState } from "react";
 import axios from 'axios';
+import BlockUi from 'react-block-ui';
+import 'react-block-ui/style.css';
 
 interface IFormProps {
   /* The http path that the form will be posted to */
@@ -9,15 +11,16 @@ interface IFormProps {
 
 interface IFormState {
     username: string;
+    loader: boolean;
   }
 
 export class Form extends React.Component<IFormProps, IFormState> {
   constructor(props: IFormProps) {
     super(props);
-    this.state = {username: ""};
+    this.state = {username: "", loader: false};
   }
   
-
+  
   /**
    * Handles form submission
    * @param {React.FormEvent<HTMLFormElement>} e - The form event
@@ -25,17 +28,20 @@ export class Form extends React.Component<IFormProps, IFormState> {
   private handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     this.setState({username: e.currentTarget.value});
   }
-
+  
   private handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault();
+    this.setState({loader: true});
 
     if (this.validateForm()) {
       //const submitSuccess: boolean = await this.submitForm();
       //send request to flask api
-      const host = "https://cryptopriceadvisor.com"
+      //const host = "http://localhost:5000"
+      const host = "https://kwesidadson.com"
       const url = `${host}/api/authorize_endsars_twitter/`
+      //const home = "http://localhost:3000"
       const home = "https://kwesidadson.com"
 
       console.log("URL: ",url)
@@ -84,17 +90,19 @@ export class Form extends React.Component<IFormProps, IFormState> {
     return true;
   }
 
+  
   public render() {
+
+  
     return (
       <React.Fragment>
         <div className="alert alert-info">
              Hi there fighter! This will quote retweet random tweets with hashtags #ENDSWAT, #ENDSARS, #SARSMUSTGO, #SARSMUSTEND, #SARSMUSTENDNOW while you are away. This will be done once every hour so your account is safe! enter your username to activate it!
            </div>
-      
+           <BlockUi tag="div" blocking={this.state.loader}>
         <div className="end-sars-container">
            
         <div className="landing-info">
-         
       <form onSubmit={this.handleSubmit} noValidate={true}>
         <div className="container">
           <input name="username" placeholder="@username" onChange={this.handleChange}/>
@@ -113,6 +121,7 @@ export class Form extends React.Component<IFormProps, IFormState> {
       </form>
       </div>
       </div>
+      </BlockUi>
       </React.Fragment>
     );
   }
